@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :shipping_charge_id, numericality: { other_than: 1 }
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :shipping_day_id, numericality: { other_than: 1 }
-  validates :price,            presence: true
+  validates :price,            presence: true, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
 
   belongs_to :user
   has_one    :order
