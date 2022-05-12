@@ -5,7 +5,7 @@ RSpec.describe OrderShipping, type: :model do
     before do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
-      @order_shipping = FactoryBot.build(:order_shipping, user_id: user.id,item_id: item.id)
+      @order_shipping = FactoryBot.build(:order_shipping, user_id: user.id, item_id: item.id)
       sleep 0.1
     end
 
@@ -53,9 +53,9 @@ RSpec.describe OrderShipping, type: :model do
       it 'telephoneが正しい形式でないと保存できないこと' do
         @order_shipping.telephone = '123456789'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Telephone is invalid")
+        expect(@order_shipping.errors.full_messages).to include('Telephone is invalid')
       end
-      
+
       it 'userが紐付いていないと保存できないこと' do
         @order_shipping.user_id = nil
         @order_shipping.valid?
