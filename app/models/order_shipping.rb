@@ -8,10 +8,11 @@ class OrderShipping
   validates :city, presence: true
   validates :address, presence: true
   validates :telephone, presence: true, format: { with: /\A\d{10,11}\z/ }
- 
+
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
-    
-    Shipping.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building: building, telephone: telephone, order_id: order.id)
+
+    Shipping.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building: building,
+                    telephone: telephone, order_id: order.id)
   end
 end
