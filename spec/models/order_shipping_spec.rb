@@ -50,17 +50,17 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Telephone can't be blank")
       end
-      it '電話番号が9桁以下では購入できない' do
+      it 'telephoneが9桁以下では購入できない' do
         @order_shipping.telephone = '123456789'
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include('Telephone is invalid')
       end
-      it '電話番号が12桁以上では購入できない' do
+      it 'telephoneが12桁以上では購入できない' do
         @order_shipping.telephone = '123456789123'
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include('Telephone is invalid')
       end
-      it '電話番号に半角数字以外が含まれている場合は購入できない' do
+      it 'telephoneに半角数字以外が含まれている場合は購入できない' do
         @order_shipping.telephone = '123456789１'
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include('Telephone is invalid')
